@@ -5,5 +5,4 @@ OffGrid Framework
 Assets
 ------
 - Grid
-- HTTP Client
 - Repository
