@@ -1,0 +1,21 @@
+{
+    "name": "offgrid/offgrid-framework",
+    "description": "A complete library for the OffGrid application",
+    "type": "wordpress-plugin",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Justin Page",
+            "email": "xjustinpagex@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "composer/installers": "~1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "OG\\": "src/"
+        }
+    }
+}
