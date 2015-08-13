@@ -25,14 +25,34 @@ class Post
     /**
      * Get all post
      *
-     * @return Mixed collection of grid objects
+     * @return Mixed $collection of grid objects
      */
     public static function all()
     {
         $posts = get_posts([
-            'numberposts' => 27,
-            'post_type' => 'post',
-            'post_status' => 'publish',
+            'numberposts'      => 27,
+            'post_type'        => 'post',
+            'post_status'      => 'publish',
+            'suppress_filters' => true,
+        ]);
+
+        return Grid::build($posts);
+    }
+
+    /**
+     * Get post by category
+     *
+     * @param Integer $categoryID represents category
+     *
+     * @param Mixed $collection of grid objects
+     */
+    public static function category($categoryID)
+    {
+        $posts = get_posts([
+            'numberposts'      => 3,
+            'category'         => $categoryID,
+            'post_type'        => 'post',
+            'post_status'      => 'publish',
             'suppress_filters' => true,
         ]);
 
