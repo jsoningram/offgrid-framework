@@ -42,15 +42,15 @@ class Post
     /**
      * Get post by category
      *
-     * @param Integer $categoryID represents category
+     * @param Integer $id represents category
      *
      * @param Mixed $collection of grid objects
      */
-    public static function category($categoryID)
+    public static function category($id)
     {
         $posts = get_posts([
             'numberposts'      => 3,
-            'category'         => $categoryID,
+            'category'         => $id,
             'post_type'        => 'post',
             'post_status'      => 'publish',
             'suppress_filters' => true,
