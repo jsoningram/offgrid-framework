@@ -21,7 +21,7 @@ namespace OG\Grid;
 class Factory
 {
     /**
-     * Builld object from posts
+     * Build object from posts
      *
      * @param Mixed $posts
      *
