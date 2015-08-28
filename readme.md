@@ -1,6 +1,6 @@
 OffGrid Framework
 =================
-> A complete library for the OffGrid application
+> A complete library for the offgrid application
 
 Assets
 ------
