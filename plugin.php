@@ -8,4 +8,3 @@ Author URI: http://www.qfor.com/
 Plugin URI: http://www.offgridweb.com
 Text Domain: offgrid-framework
 */
-

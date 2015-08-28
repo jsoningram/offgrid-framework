@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Grid factory: build from posts
+ * Grid Factory: build from posts
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -16,7 +16,7 @@
 namespace OG\Grid;
 
 /**
- * Grid factory: build from posts
+ * Grid Factory: build from posts
  */
 class Factory
 {
