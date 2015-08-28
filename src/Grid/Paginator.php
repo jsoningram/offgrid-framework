@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Grid Generator: load mosaic from posts
+ * Grid Paginator: pagination and load
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -16,14 +16,12 @@
 namespace OG\Grid;
 
 /**
- * Grid Generator: load mosaic from posts
+ * Grid Paginator: pagination and load
  */
-class Generator
+class Paginator
 {
-    const PATH = '/templates/home/content-mosaic.php';
-
-    public static function load()
+    public function __construct()
     {
-        require get_stylesheet_directory() . self::PATH;
+        // add_action('wp_ajax_load_mosaic', [$this, 'load']);
     }
 }

@@ -6,8 +6,8 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @category Must-Use Plugin
- * @package  MU\Grid
+ * @category Plugin
+ * @package  OG\Grid
  * @author   (c) qfor <admin@qfor.com>
  * @license  http://opensource.org/licenses/MIT MIT
  * @link     http://qfor.com
