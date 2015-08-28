@@ -30,7 +30,8 @@ class Post
     public static function all()
     {
         $posts = get_posts([
-            'numberposts'      => 27,
+            'numberposts'      => 23,
+            'offset'           => 0,
             'post_type'        => 'post',
             'post_status'      => 'publish',
             'suppress_filters' => true,
