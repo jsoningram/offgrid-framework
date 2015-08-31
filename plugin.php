@@ -8,3 +8,5 @@ Author URI: http://www.qfor.com/
 Plugin URI: http://www.offgridweb.com
 Text Domain: offgrid-framework
 */
+
+require_once 'src/OffGrid.php';

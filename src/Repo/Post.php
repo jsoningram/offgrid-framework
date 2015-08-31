@@ -30,7 +30,7 @@ class Post
     public static function all()
     {
         $posts = get_posts([
-            'numberposts'      => 23,
+            'numberposts'      => 24,
             'offset'           => 0,
             'post_type'        => 'post',
             'post_status'      => 'publish',
