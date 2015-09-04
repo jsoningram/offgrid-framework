@@ -23,21 +23,30 @@ use OG\Grid\Factory as Grid;
 class Post
 {
     /**
-     * Get all post
+     * Get all post with offset
+     *
+     * @param Int $offset number off for get_posts
      *
      * @return Mixed $collection of grid objects
      */
-    public static function all()
+    public static function all($offset)
     {
+        $limit = 24;
+        $offset = $offset * $limit;
+
         $posts = get_posts([
-            'numberposts'      => 24,
-            'offset'           => 0,
+            'numberposts'      => $limit,
+            'offset'           => $offset,
             'post_type'        => 'post',
             'post_status'      => 'publish',
             'suppress_filters' => true,
         ]);
 
-        return Grid::build($posts);
+        if (count($posts) == $limit) {
+            return Grid::build($posts);
+        }
+
+        return null;
     }
 
     /**

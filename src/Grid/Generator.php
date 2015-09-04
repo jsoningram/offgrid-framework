@@ -22,8 +22,16 @@ class Generator
 {
     const PATH = '/templates/home/content-mosaic.php';
 
-    public static function load()
+    /**
+     * Load template
+     *
+     * @param Int $offset number off for pagination
+     *
+     * @return void
+     */
+    public static function load($offset = 0)
     {
+        $offset = $offset;
         require get_stylesheet_directory() . self::PATH;
     }
 }

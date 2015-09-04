@@ -22,15 +22,25 @@ use OG\Grid\Generator as Grid;
  */
 class Paginator
 {
+    /**
+     * Register actions for ajax
+     *
+     * @return void
+     */
     public function __construct()
     {
         add_action('wp_ajax_loadmosaic', [$this, 'load']);
         add_action('wp_ajax_nopriv_loadmosaic', [$this, 'load']);
     }
 
+    /**
+     * Get offset and load grid
+     *
+     * @return void
+     */
     public function load()
     {
-        Grid::load();
+        Grid::load($_POST['offset']);
         die();
     }
 }
