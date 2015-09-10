@@ -2,7 +2,8 @@ OffGrid Framework
 =================
 > A complete library for the offgrid application
 
-Assets
-------
-- Grid
-- Repository
+Services
+--------
+
+*Grid*
+Responsible for managing use and creation of mosaics
