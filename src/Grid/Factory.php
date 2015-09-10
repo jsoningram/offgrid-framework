@@ -29,6 +29,8 @@ class Factory
      */
     public static function build($posts)
     {
+        $collection = [];
+
         for ($i = 0; $i < count($posts); $i++) {
 
            $post = new \StdClass;
