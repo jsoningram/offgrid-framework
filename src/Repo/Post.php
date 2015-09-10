@@ -54,7 +54,7 @@ class Post
      *
      * @param Integer $id represents category
      *
-     * @param Mixed $collection of grid objects
+     * @return Mixed $collection of grid objects
      */
     public static function category($id)
     {
