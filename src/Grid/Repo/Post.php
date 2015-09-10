@@ -13,7 +13,7 @@
  * @link     http://qfor.com
  */
 
-namespace OG\Repo;
+namespace OG\Grid\Repo;
 
 use OG\Grid\Factory as Grid;
 
