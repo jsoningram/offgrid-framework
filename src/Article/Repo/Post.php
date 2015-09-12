@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Post Repository: get data for build
+ * Post Repository: get data for article
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -13,17 +13,18 @@
  * @link     http://qfor.com
  */
 
-namespace OG\Grid\Repo;
+namespace OG\Article\Repo;
 
-use OG\Grid\Factory as Grid;
+use OG\Article\Factory as Article;
 
 /**
- * Post Repository: get data for build
+ * Post Repository: get data for article
  */
 class Post
 {
     /**
-     * Get all post with offset
+     * Get all post with offset and category
+     * offset plus three in cause of post mosaic
      *
      * @param Int $offset number off for get_posts
      *
@@ -31,41 +32,25 @@ class Post
      */
     public static function all($offset)
     {
-        $limit = 24;
-        $offset = $offset * $limit;
+        $limit = 12;
+        $offset = $offset * $limit + 3;
+        $id = get_the_category()[0]->cat_ID;
 
         $posts = get_posts([
+            'category'         => $id,
             'numberposts'      => $limit,
             'offset'           => $offset,
             'post_type'        => 'post',
             'post_status'      => 'publish',
+            'orderby'          => 'date',
+            'order'            => 'DESC',
             'suppress_filters' => true,
         ]);
 
         if (count($posts) == $limit) {
-            return Grid::build($posts);
+            return Article::build($posts);
         }
 
         return null;
-    }
-
-    /**
-     * Get post by category
-     *
-     * @return Mixed $collection of grid objects
-     */
-    public static function category()
-    {
-        $id = get_the_category()[0]->cat_ID;
-
-        $posts = get_posts([
-            'numberposts'      => 3,
-            'category'         => $id,
-            'post_type'        => 'post',
-            'post_status'      => 'publish',
-            'suppress_filters' => true,
-        ]);
-
-        return Grid::build($posts);
     }
 }
