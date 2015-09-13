@@ -15,7 +15,8 @@
 
 namespace OG;
 
-use OG\Grid\Paginator;
+use OG\Grid\Paginator as Grid;
+use OG\Article\Paginator as Article;
 
 /**
  * OffGrid Plugin: framework init
@@ -23,7 +24,8 @@ use OG\Grid\Paginator;
 class OffGrid
 {
 
-    protected $paginator;
+    protected $grid;
+    protected $article;
 
     /**
      * Initialize objects
@@ -32,7 +34,8 @@ class OffGrid
      */
     public function __construct()
     {
-        $this->paginator = new Paginator;
+        $this->grid    = new Grid;
+        $this->article = new Article;
     }
 }
 

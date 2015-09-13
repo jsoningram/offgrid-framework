@@ -30,14 +30,13 @@ class Post
      *
      * @return Mixed $collection of grid objects
      */
-    public static function all($offset)
+    public static function all($offset, $category)
     {
         $limit = 12;
         $offset = $offset * $limit + 3;
-        $id = get_the_category()[0]->cat_ID;
 
         $posts = get_posts([
-            'category'         => $id,
+            'category'         => $category,
             'numberposts'      => $limit,
             'offset'           => $offset,
             'post_type'        => 'post',
@@ -47,7 +46,7 @@ class Post
             'suppress_filters' => true,
         ]);
 
-        if (count($posts) == $limit) {
+        if ($posts) {
             return Article::build($posts);
         }
 
