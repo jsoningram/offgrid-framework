@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Article Generator: load template for blog roll
+ * Tag Generator: load template for blog roll
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -13,14 +13,14 @@
  * @link     http://qfor.com
  */
 
-namespace OG\Article;
+namespace OG\Tag;
 
 /**
- * Article Generator: load mosaic from posts
+ * Tag Generator: load template for blog roll
  */
 class Generator
 {
-    const PATH = '/templates/category/blog-roll.php';
+    const PATH = '/templates/tag/blog-roll.php';
 
     /**
      * Load template
@@ -29,13 +29,15 @@ class Generator
      *
      * @return void
      */
-    public static function load($offset = 0, $category = 0)
+    public static function load($offset = 0, $tag = 0)
     {
-        $category = get_cat_ID($category);
-        $offset   = $offset;
+        $tag    = get_term_by('name', $tag, 'post_tag');
+        $offset = $offset;
 
-        if (0 === $category) {
-           $category = get_the_category()[0]->cat_ID;
+        if ($tag) {
+            $tag = $tag->term_id;
+        } else {
+            $tag = get_query_var('tag_id');
         }
 
         require get_stylesheet_directory() . self::PATH;

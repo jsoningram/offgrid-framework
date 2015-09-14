@@ -15,6 +15,7 @@
 
 namespace OG;
 
+use OG\Tag\Paginator as Tag;
 use OG\Grid\Paginator as Grid;
 use OG\Article\Paginator as Article;
 
@@ -24,6 +25,7 @@ use OG\Article\Paginator as Article;
 class OffGrid
 {
 
+    protected $tag;
     protected $grid;
     protected $article;
 
@@ -34,6 +36,7 @@ class OffGrid
      */
     public function __construct()
     {
+        $this->tag     = new Tag;
         $this->grid    = new Grid;
         $this->article = new Article;
     }

@@ -25,12 +25,15 @@ class Tag
     /**
      * Get post by tag
      *
-     * @param Integer $tag slug of taxonomy
-     *
      * @return Mixed $collection of grid objects
      */
-    public static function get($tag)
+    public static function get()
     {
+        $tag = get_terms(
+            'post_tag',
+            'include=' . get_query_var('tag_id')
+        )[0]->slug;
+
         $posts = get_posts([
             'numberposts'      => 3,
             'tag'              => $tag,
