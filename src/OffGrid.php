@@ -18,6 +18,7 @@ namespace OG;
 use OG\Tag\Paginator as Tag;
 use OG\Grid\Paginator as Grid;
 use OG\Article\Paginator as Article;
+use OG\Search\Paginator as Search;
 
 /**
  * OffGrid Plugin: framework init
@@ -28,6 +29,7 @@ class OffGrid
     protected $tag;
     protected $grid;
     protected $article;
+	protected $search;
 
     /**
      * Initialize objects
@@ -39,6 +41,7 @@ class OffGrid
         $this->tag     = new Tag;
         $this->grid    = new Grid;
         $this->article = new Article;
+		$this->search  = new Search;
     }
 }
 
