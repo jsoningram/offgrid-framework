@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Post Repository: get data for article
+ * Post Repository: get data for search
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -13,7 +13,7 @@
  * @link     http://qfor.com
  */
 
-namespace OG\Article\Repo;
+namespace OG\Search\Repo;
 
 use OG\Article\Factory as Article;
 
@@ -23,11 +23,11 @@ use OG\Article\Factory as Article;
 class Post
 {
     /**
-     * Get all post with offset and category
+     * Get all post with offset and search term
      * offset plus three in cause of post mosaic
      *
      * @param Int $offset number off for get_posts
-     * @param Int $category identifier
+     * @param String $s search term
      *
      * @return Mixed $collection of grid objects
      */
@@ -37,9 +37,9 @@ class Post
         $offset = $offset * $limit + 3;
 
         $posts = get_posts([
-            'category'         => $category,
             'numberposts'      => $limit,
             'offset'           => $offset,
+            's'		           => $category,
             'post_type'        => 'post',
             'post_status'      => 'publish',
             'orderby'          => 'date',
