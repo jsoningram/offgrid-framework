@@ -18,7 +18,7 @@ namespace OG\Grid;
 /**
  * Grid Factory for Related: build from posts
  */
-class Factory
+class FactoryRelated
 {
     /**
      * Build object from posts
@@ -30,6 +30,16 @@ class Factory
     public static function build($posts)
     {
         $collection = [];
+
+        $document = new \DOMDocument;
+        $document->loadHTML($posts);
+        $list = $document->getElementsByTagName("li");
+        $images  = $document->getElementsByTagName("img");
+        foreach ($list as $node) {
+            $collection[] = $node->nodeValue;
+        }
+
+        var_dump($collection); die();
 
         for ($i = 0; $i < count($posts); $i++) {
 
