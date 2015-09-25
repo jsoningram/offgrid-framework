@@ -35,18 +35,19 @@ class Factory
 
            $post = new \StdClass;
 
-           $post->id      = $posts[$i]->ID;
-           $post->title   = $posts[$i]->post_title;
+           $post->id       = $posts[$i]->ID;
+           $post->title    = $posts[$i]->post_title;
 
-           $post->date    = get_the_date('F j, Y', $posts[$i]->ID);
-           $post->author  = get_the_author_meta(
+           $post->author   = get_the_author_meta(
                'display_name', $posts[$i]->post_author);
+           $post->date     = get_the_date('F j, Y', $posts[$i]->ID);
 
-           $post->link    = get_permalink($posts[$i]->ID);
-           $post->excerpt = $posts[$i]->post_excerpt;
+           $post->link     = get_permalink($posts[$i]->ID);
+           $post->excerpt  = $posts[$i]->post_excerpt;
+           $post->category = get_the_category($posts[$i]->ID)[0]->name;
 
-           $post->tags    = wp_get_post_tags($posts[$i]->ID);
-           $post->image   = wp_get_attachment_image_src(
+           $post->tags     = wp_get_post_tags($posts[$i]->ID);
+           $post->image    = wp_get_attachment_image_src(
                get_post_thumbnail_id(
                    $posts[$i]->ID), "medium"
                )[0];

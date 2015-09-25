@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Tag Repository: get data for build
+ * Post Repository: get data for build
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -18,25 +18,22 @@ namespace OG\Grid\Repo;
 use OG\Grid\Factory as Grid;
 
 /**
- * Tag Repository: get data for build
+ * Post Repository: get data for build
  */
-class Tag
+class Search
 {
     /**
-     * Get post by tag
+     * Get post by search query
      *
      * @return Mixed $collection of grid objects
      */
     public static function get()
     {
-        $tag = get_terms(
-            'post_tag',
-            'include=' . get_query_var('tag_id')
-        )[0]->slug;
+        $s = get_search_query();
 
         $posts = get_posts([
             'numberposts'      => 3,
-            'tag'              => $tag,
+            's'			       => $s,
             'post_type'        => 'post',
             'post_status'      => 'publish',
             'suppress_filters' => true,

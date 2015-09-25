@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Post Repository: get data for article
+ * Post Repository: get data for tag
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -13,7 +13,7 @@
  * @link     http://qfor.com
  */
 
-namespace OG\Article\Repo;
+namespace OG\Tag\Repo;
 
 use OG\Article\Factory as Article;
 
@@ -27,19 +27,19 @@ class Post
      * offset plus three in cause of post mosaic
      *
      * @param Int $offset number off for get_posts
-     * @param Int $category identifier
+     * @param Int $tag identifier of taxonomy
      *
      * @return Mixed $collection of grid objects
      */
-    public static function all($offset, $category)
+    public static function all($offset, $tag)
     {
         $limit = 12;
         $offset = $offset * $limit + 3;
 
         $posts = get_posts([
-            'category'         => $category,
             'numberposts'      => $limit,
             'offset'           => $offset,
+            'tag_id'           => $tag,
             'post_type'        => 'post',
             'post_status'      => 'publish',
             'orderby'          => 'date',

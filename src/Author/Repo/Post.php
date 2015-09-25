@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Post Repository: get data for article
+ * Post Repository: get data for author
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -13,7 +13,7 @@
  * @link     http://qfor.com
  */
 
-namespace OG\Article\Repo;
+namespace OG\Author\Repo;
 
 use OG\Article\Factory as Article;
 
@@ -23,23 +23,23 @@ use OG\Article\Factory as Article;
 class Post
 {
     /**
-     * Get all post with offset and category
+     * Get all post with offset and author id
      * offset plus three in cause of post mosaic
      *
      * @param Int $offset number off for get_posts
-     * @param Int $category identifier
+     * @param Int $category author id
      *
      * @return Mixed $collection of grid objects
      */
     public static function all($offset, $category)
     {
         $limit = 12;
-        $offset = $offset * $limit + 3;
+        $offset = $offset * $limit;
 
         $posts = get_posts([
-            'category'         => $category,
             'numberposts'      => $limit,
             'offset'           => $offset,
+            'author'           => $category,
             'post_type'        => 'post',
             'post_status'      => 'publish',
             'orderby'          => 'date',
