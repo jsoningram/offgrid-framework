@@ -18,12 +18,12 @@ namespace OG\Grid;
 /**
  * Grid Factory for Related: build from posts
  */
-class Factory
+class FactoryRelated
 {
     /**
      * Build object from posts
      *
-     * @param Mixed $posts
+     * @param String $posts of HTML to parse
      *
      * @return Mixed collection of posts
      */
@@ -31,19 +31,45 @@ class Factory
     {
         $collection = [];
 
-        for ($i = 0; $i < count($posts); $i++) {
+        $document = new \DOMDocument;
+        $document->loadHTML($posts);
+        $iterator = 0;
 
-           $post = new \StdClass;
-           $post->category = get_the_category($posts[$i]->ID)[0]->name;
-           $post->link     = get_permalink($posts[$i]->ID);
-           $post->excerpt  = $posts[$i]->post_excerpt;
-           $post->title    = $posts[$i]->post_title;
-           $post->image = wp_get_attachment_image_src(
-               get_post_thumbnail_id(
-                   $posts[$i]->ID), "large"
-               )[0];
+        $articles = $document->getElementsByTagName("li");
+        foreach ($articles as $article) {
+            $post = new \StdClass;
 
-           $collection[$i] = $post;
+            $links    = $article->getElementsByTagName("a");
+            $images   = $article->getElementsByTagName("img");
+            $excerpts = $article->getElementsByTagName("small");
+
+            foreach ($links as $link) {
+                if (0 == $iterator % 2) {
+                    $iterator++;
+                    continue;
+                }
+
+                $iterator++;
+
+                $post->link = $link->
+                    getAttributeNode('href')->value;
+                $post->title = $link->textContent;
+
+                $post->category = get_the_category(
+                    url_to_postid($post->link)
+                )[0]->name;
+            }
+
+            foreach ($images as $image) {
+                $post->image = $image->
+                    getAttributeNode('src')->value;
+            }
+
+            foreach ($excerpts as $excerpt) {
+                $post->excerpt = $excerpt->textContent;
+            }
+
+            $collection[] = $post;
         }
 
         return $collection;
