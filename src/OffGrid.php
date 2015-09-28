@@ -20,6 +20,7 @@ use OG\Grid\Paginator as Grid;
 use OG\Article\Paginator as Article;
 use OG\Search\Paginator as Search;
 use OG\Author\Paginator as Author;
+use OG\Video\Connector as Video;
 
 /**
  * OffGrid Plugin: framework init
@@ -32,6 +33,7 @@ class OffGrid
     protected $article;
 	protected $search;
 	protected $author;
+	protected $video;
 
     /**
      * Initialize objects
@@ -45,6 +47,7 @@ class OffGrid
         $this->article = new Article;
 		$this->search  = new Search;
 		$this->author  = new Author;
+		$this->video   = new Video;
     }
 }
 
