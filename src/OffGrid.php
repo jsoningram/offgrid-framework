@@ -33,7 +33,6 @@ class OffGrid
     protected $article;
 	protected $search;
 	protected $author;
-	protected $video;
 
     /**
      * Initialize objects
@@ -47,7 +46,6 @@ class OffGrid
         $this->article = new Article;
 		$this->search  = new Search;
 		$this->author  = new Author;
-		$this->video   = new Video;
     }
 }
 
