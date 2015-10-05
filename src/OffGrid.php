@@ -20,6 +20,7 @@ use OG\Grid\Paginator as Grid;
 use OG\Article\Paginator as Article;
 use OG\Search\Paginator as Search;
 use OG\Author\Paginator as Author;
+use OG\Video\Connector as Video;
 
 /**
  * OffGrid Plugin: framework init
