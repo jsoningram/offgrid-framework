@@ -42,6 +42,11 @@ class Factory
                get_post_thumbnail_id(
                    $posts[$i]->ID), "large"
                )[0];
+           if ('video' === get_post_format($posts[$i]->ID)) {
+               $post->action = 'watch <i class="fa fa-play-circle"></i>';
+           } else {
+               $post->action = 'view';
+           }
 
            $collection[$i] = $post;
         }
